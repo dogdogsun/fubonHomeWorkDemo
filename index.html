@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link rel=stylesheet type="text/css" href="./resource/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <title>富邦人壽 - 資安系統管理平台</title>
+  <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+</head>
+<body>
+  <div id="fubon">
+    <div class="header">
+      <div class="container">
+        <div class="navbar">
+          <a href=""><div class="logo" title="富邦人壽 - 資安系統管理平台"></div></a>
+          <div class="menu">
+            <ul>
+              <li><a href="">首頁</a></li>
+              <li class="active"><a href="">健康資源系統</a></li>
+              <li><a href="">通訊錄系統</a></li>
+              <li class="disabled"><a>其他職安系統</a></li>
+              <li class="icon"><a href=""><span class="member-icon"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="subNavBar">
+      <div class="container">
+        <ul>
+          <li><a href="">醫師諮詢服務</a></li>
+          <li class="active"><a href="">推動健康促進</a></li>
+          <li><a href="">健康快e通</a></li>
+          <li><a href="">異常負荷預防</a></li>
+          <li><a href="">人因危害預防</a></li>
+          <li><a href="">母性健康保護</a></li>
+          <li><a href="">其他</a></li>
+        </ul>
+        
+      </div>
+    </div>
+    <div class="routeBar">
+      <div class="container">
+        <ul>
+          <li><a href="">健康資源系統</a></li>
+          <li><a href="">推動健康促進</a></li>
+          <li><a href="">滿意度問卷維護</a></li>
+          <li><a href="">滿意度問卷內容</a></li>
+          <li class="active"><a href="">編輯滿意度問卷</a></li>
+        </ul>
+        
+      </div>
+    </div>
+    <div class="page">
+      <div class="container">
+        <div class="title">編輯滿意度問卷</div>
+        <div class="contentBox">
+          <div class="stitle">滿意度問卷Banner</div>
+          <div class="dropInBox">
+            <div class="icon"></div>
+            <div class="description">選擇欲上傳資料：點擊或將文件拖曳到這裡上傳</div>
+            <div class="hint">最佳尺寸建議：寬1088＊高110，每張大小限制不超過3MB，限上傳 jpg、png、gif 格式。</div>
+          </div>
+          <div class="uploadItem"><img :src="bannerUrl"/></div>
+          <div v-show="bannerUrl != ''" class="fileName">{{ bannerUrl }}<div class="deletePic" @click="delBanner()"></div></div>
+          <div class="stitle bold must">問卷文案</div>
+          <div id="questionnaireContent" class="editor">{{ tempQuestionnaireContent }}</div>
+          <div class="stitle bold must">個資聲明文案</div>
+          <div id="statementContent" class="editor">{{ tempStatementContent }}</div>
+        </div>
+        <div class="questionnaireEditor">
+          <div class="create">
+            <div class="subTitle">編輯題目</div>
+            <template v-for="(item,index) in items">
+              <div class="items">
+                <div class="icons">
+                  <div class="icon icon-title itemType"></div>
+                  <div class="icon itemNum"></div>
+                </div>
+                <div class="item singleLine">
+                  <div class="switch">
+                    <input type="checkbox" class="switch__input">
+                    <div class="switch__toggle">
+                      <div class="switch__handle">
+                        <div class="switch__touch"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="delete" @click="delItem(index)"></div>
+                  <el-input v-model="item.content"></el-input>
+                </div>
+              </div>
+            </template>
+          </div>
+          <div class="tools">
+            <div class="subTitle">選擇題型</div>
+            <div class="typeItems">
+              <div class="icon icon-singleLine"></div>
+              <span>單行文字</span>
+            </div>
+            <div class="typeItems">
+              <div class="icon icon-metex"></div>
+              <span>多行文字</span>
+            </div>
+            <div class="typeItems">
+              <div class="icon icon-MC"></div>
+              <span>單選題</span>
+            </div>
+            <div class="typeItems">
+              <div class="icon icon-MCQ"></div>
+              <span>多選題</span>
+            </div>
+            <div class="typeItems">
+              <div class="icon icon-number"></div>
+              <span>數字題</span>
+            </div>
+            <div class="typeItems">
+              <div class="icon icon-star"></div>
+              <span>星級評分</span>
+            </div>
+            <div class="typeItems">
+              <div class="icon icon-title"></div>
+              <span>分類標題</span>
+            </div>
+            <div class="typeItems">
+              <div class="icon icon-matrix"></div>
+              <span>矩陣題</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div @click="preView()" syle="font-size:20px;color:red;">預覽</div>
+    <el-dialog title="title" :visible.sync="preViewDialog">
+      <div><img :src="bannerUrl"/></div>
+      <div v-html="tempQuestionnaireContent"></div>
+      <div v-html="tempStatementContent"></div>
+      <template v-for="(item,index) in items">
+        <el-input v-model="item.content"></el-input>
+      </template>
+      <span slot="footer">
+        <el-button round plain @click="preViewDialog = false">關閉</el-button>
+        <el-button round type="primary" @click="submit()">送出</el-button>
+      </span>
+    </el-dialog>
+  </div>
+  
+  
+  <script>
+    new Vue({
+      el: "#fubon",
+      data() {
+        return {
+          bannerUrl: './resource/images/templateBanner.svg',
+          preViewDialog: false,
+          agreepact: false,
+          tempQuestionnaireContent: "content1",
+          tempStatementContent: "content2",
+          items: [
+            {
+              type: 'singleLine',
+              content: '一、基本資料填寫',
+              ststus: true,
+            },
+          ],
+        }
+      },
+      methods: {
+        delBanner() {
+          this.bannerUrl = '';
+        },
+        delItem(index) {
+          this.items.splice(index,1);
+        },
+        preView(val) {
+          this.tempQuestionnaireContent = questionnaireContent.getData();
+          this.tempStatementContent = statementContent.getData();
+          this.preViewDialog = true;
+        },
+        submit() {
+          console.log('送出');
+          preViewDialog = false;
+        }
+      }
+    });
+  </script>
+  <script>
+    ClassicEditor.create(document.querySelector('#questionnaireContent')
+            // , {toolbar: ['bold', 'italic', 'underline', 'strikethrough', 'blockQuote', 'imageUpload', 'link', 'mediaEmbed', 'insterTable', 'undo', 'redo']}
+    ).then( editor => {
+      questionnaireContent = editor;
+    } ) .catch( error => {
+      console.error( error );
+    } );
+    ClassicEditor.create(document.querySelector('#statementContent')
+            // , {toolbar: ['bold', 'italic', 'underline', 'strikethrough', 'blockQuote', 'imageUpload', 'link', 'mediaEmbed', 'insterTable', 'undo', 'redo']}
+    ).then( editor => {
+      statementContent = editor;
+    } ) .catch( error => {
+      console.error( error );
+    } );
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,488 @@
+@charset "UTF-8";
+body {
+  font-family: Arial, 微軟正黑體, sans-serif;
+  text-size-adjust: none;
+  font-size: 18px;
+  color: rgb(102, 102, 102);
+  line-height: 1.5;
+}
+body ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+}
+body a {
+  text-decoration: none;
+  color: #363636;
+}
+body textarea {
+  width: 80%;
+  height: 100px;
+}
+body .bold {
+  font-weight: bold;
+}
+body .must::after {
+  content: "＊";
+  color: #F5222D;
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+#fubon .el-dialog {
+  width: 1000px;
+}
+#fubon .header {
+  min-height: 50px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  font-family: "微軟正黑體";
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  line-height: 1.5;
+  margin-right: auto;
+  margin-left: auto;
+}
+#fubon .header .container {
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+}
+#fubon .header .container .navbar {
+  position: relative;
+  display: flex;
+  padding: 15px 10px 6px;
+}
+#fubon .header .container .navbar .logo {
+  width: 138px;
+  height: 60px;
+  background-image: url("../images/image_logoMerge.svg");
+  background-repeat: no-repeat;
+}
+#fubon .header .container .navbar .menu {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  align-items: center;
+}
+#fubon .header .container .navbar .menu ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+#fubon .header .container .navbar .menu ul li a {
+  line-height: 34px;
+}
+#fubon .header .container .navbar .menu ul li a .member-icon {
+  display: block;
+  width: 34px;
+  height: 34px;
+  background-image: url("../images/button_ID.svg");
+  background-repeat: no-repeat;
+}
+#fubon .header .container .navbar .menu ul li::after {
+  content: " ";
+  display: block;
+  height: 4px;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 3px;
+}
+#fubon .header .container .navbar .menu ul li:not(.icon):hover::after, #fubon .header .container .navbar .menu ul li.active::after {
+  background-color: #23C4A8;
+}
+#fubon .header .container .navbar .menu ul li.disabled a {
+  color: #EBEBEB;
+}
+#fubon .header .container .navbar .menu ul li.disabled:not(.icon):hover::after {
+  background-color: #EBEBEB;
+}
+#fubon .subNavBar {
+  border-bottom: solid 1px #D9D9D9;
+  margin: 0 -6px;
+}
+#fubon .subNavBar .container {
+  margin: 82px auto 0 auto;
+  max-width: 1250px;
+}
+#fubon .subNavBar .container ul li {
+  line-height: 54px;
+  padding: 0 20px 0 25px;
+  cursor: pointer;
+  width: 184px;
+}
+#fubon .subNavBar .container ul li a {
+  color: #000000;
+  font-weight: 500;
+}
+#fubon .subNavBar .container ul li a:before {
+  content: "▪";
+  color: #23C4A8;
+  font-size: 25px;
+  margin-right: 9px;
+  vertical-align: top;
+}
+#fubon .subNavBar .container ul li:hover, #fubon .subNavBar .container ul li.active {
+  background-color: #23C4A8;
+}
+#fubon .subNavBar .container ul li:hover a, #fubon .subNavBar .container ul li:hover a:before, #fubon .subNavBar .container ul li.active a, #fubon .subNavBar .container ul li.active a:before {
+  color: white;
+  font-weight: unset;
+}
+#fubon .routeBar {
+  background-color: #F5F8FC;
+}
+#fubon .routeBar .container {
+  margin: 0px auto 0 auto;
+  max-width: 1140px;
+}
+#fubon .routeBar .container ul li {
+  font-size: 12px;
+  line-height: 42px;
+}
+#fubon .routeBar .container ul li:after {
+  content: "/";
+  margin: 0 10px;
+  vertical-align: top;
+}
+#fubon .routeBar .container ul li:nth-last-child(1):after {
+  content: "";
+}
+#fubon .routeBar .container ul li a {
+  color: #000000;
+}
+#fubon .routeBar .container ul li a.active {
+  cursor: inherit;
+}
+#fubon .routeBar .container ul li:hover a, #fubon .routeBar .container ul li:hover a:before, #fubon .routeBar .container ul li.active a, #fubon .routeBar .container ul li.active a:before {
+  color: #000000;
+  font-weight: bold;
+}
+#fubon .page {
+  margin: 20px 0;
+}
+#fubon .page .container {
+  margin: 0px auto 0 auto;
+  max-width: 1120px;
+}
+#fubon .page .container .title, #fubon .page .container .subTitle {
+  font-size: 30px;
+  font-weight: 600;
+  color: #000;
+}
+#fubon .page .container .subTitle {
+  font-size: 20px;
+  color: #363636;
+  margin-bottom: 20px;
+}
+#fubon .page .container .contentBox {
+  margin: 10px 0;
+  padding: 30px 90px;
+  width: 910px;
+  background-color: #F5F8FC;
+  border-radius: 10px;
+  font-size: 16px;
+}
+#fubon .page .container .contentBox .stitle {
+  color: #000;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+#fubon .page .container .contentBox .dropInBox {
+  border: 1px dashed rgba(0, 0, 0, 0.1490196078);
+  width: 100%;
+  height: 236px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+#fubon .page .container .contentBox .dropInBox .icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  background-image: url("../images/icon-inbox.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: 20px;
+}
+#fubon .page .container .contentBox .dropInBox .description {
+  margin-bottom: 6px;
+}
+#fubon .page .container .contentBox .dropInBox .hint {
+  color: rgba(0, 0, 0, 0.431372549);
+  font-size: 14px;
+}
+#fubon .page .container .contentBox .uploadItem {
+  margin-bottom: 15px;
+}
+#fubon .page .container .contentBox .uploadItem img {
+  width: 100%;
+}
+#fubon .page .container .contentBox .fileName {
+  color: #1797FB;
+}
+#fubon .page .container .contentBox .fileName:before, #fubon .page .container .contentBox .fileName .deletePic {
+  content: " ";
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 10px;
+}
+#fubon .page .container .contentBox .fileName:before {
+  width: 15px;
+  height: 15px;
+  background-image: url(../images/icon-paperClip.png);
+}
+#fubon .page .container .contentBox .fileName .deletePic {
+  cursor: pointer;
+  width: 12px;
+  height: 12px;
+  background-image: url(../images/icon-close.png);
+  margin-left: 20px;
+}
+#fubon .page .container .questionnaireEditor {
+  margin: 10px 0;
+  padding: 30px 0;
+  width: 1088px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+#fubon .page .container .questionnaireEditor .create {
+  width: 888px;
+}
+#fubon .page .container .questionnaireEditor .create .items {
+  display: flex;
+}
+#fubon .page .container .questionnaireEditor .create .items .icons {
+  display: flex;
+  margin-right: 80px;
+}
+#fubon .page .container .questionnaireEditor .create .items .icons .icon {
+  margin-right: 5px;
+  border-radius: 4px;
+}
+#fubon .page .container .questionnaireEditor .create .items .icons .icon.itemType {
+  background-color: #BDBDBD;
+}
+#fubon .page .container .questionnaireEditor .create .items .item {
+  width: 660px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+#fubon .page .container .questionnaireEditor .create .items .item.singleLine input {
+  border: 0;
+  border-bottom: 1px solid #D2D2D2;
+  padding: 0;
+}
+#fubon .page .container .questionnaireEditor .tools {
+  width: 150px;
+  padding: 20px 25px;
+  background: #F5F8FC 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+}
+#fubon .page .container .questionnaireEditor .tools .typeItems {
+  cursor: pointer;
+  width: 148px;
+  height: 38px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px dashed #23C4A8;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: flex;
+}
+#fubon .page .container .questionnaireEditor .tools .typeItems:hover {
+  background-color: #E6F7FF;
+}
+#fubon .page .container .questionnaireEditor .tools .typeItems span {
+  line-height: 40px;
+  margin-left: 10px;
+}
+#fubon .page .container .questionnaireEditor .icon {
+  background-color: #23C4A8;
+  width: 40px;
+  height: 40px;
+  margin: -1px 0 0 -1px;
+  border-radius: 4px 0 0 4px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#fubon .page .container .questionnaireEditor .icon.icon-singleLine {
+  background-image: url(../images/button_singleLine.svg);
+}
+#fubon .page .container .questionnaireEditor .icon.icon-metex {
+  background-image: url(../images/button_mtext.svg);
+}
+#fubon .page .container .questionnaireEditor .icon.icon-MC {
+  background-image: url(../images/button_MC.svg);
+}
+#fubon .page .container .questionnaireEditor .icon.icon-MCQ {
+  background-image: url(../images/button_MCQ.svg);
+}
+#fubon .page .container .questionnaireEditor .icon.icon-number {
+  background-image: url(../images/button_number.svg);
+}
+#fubon .page .container .questionnaireEditor .icon.icon-star {
+  background-image: url(../images/button_star.svg);
+}
+#fubon .page .container .questionnaireEditor .icon.icon-title {
+  background-image: url(../images/button_title.svg);
+}
+#fubon .page .container .questionnaireEditor .icon.icon-matrix {
+  background-image: url(../images/button_matrix.svg);
+}
+#fubon .page .container .questionnaireEditor .delete {
+  cursor: pointer;
+  width: 18px;
+  height: 20px;
+  background-image: url(../images/icon-delete.png);
+  content: " ";
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 9px 64px 0 0;
+  z-index: 99;
+  position: absolute;
+}
+#fubon .page .container .questionnaireEditor .switch {
+  cursor: pointer;
+  width: 54px;
+  height: 22px;
+  overflow: hidden;
+  padding: 0;
+  background: #BFBFBF;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+  border-radius: 50px;
+  position: absolute;
+  z-index: 99;
+  margin-top: 8px;
+}
+#fubon .page .container .questionnaireEditor .switch .switch__input {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0;
+  background-color: transparent;
+  vertical-align: top;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  z-index: 1;
+  cursor: pointer;
+}
+#fubon .page .container .questionnaireEditor .switch .switch__input:checked + .switch__toggle {
+  box-shadow: inset 0 0 0 2px #23C4A8;
+  background-color: #23C4A8;
+}
+#fubon .page .container .questionnaireEditor .switch .switch__input:checked + .switch__toggle > .switch__handle {
+  left: 25px !important;
+  top: 1px !important;
+  box-shadow: unset;
+}
+#fubon .page .container .questionnaireEditor .switch .switch__input:checked + .switch__toggle:before {
+  color: white;
+}
+#fubon .page .container .questionnaireEditor .switch .switch__input:checked + .switch__toggle:after {
+  opacity: 0;
+}
+#fubon .page .container .questionnaireEditor .switch .switch__toggle {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+  border-radius: 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0);
+}
+#fubon .page .container .questionnaireEditor .switch .switch__toggle .switch__handle {
+  transition: 0.3s;
+  transform: translateX(7px);
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 1px;
+  box-shadow: unset;
+  background-color: transparent;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  content: "";
+  border-radius: 28px;
+  left: -6px;
+}
+#fubon .page .container .questionnaireEditor .switch .switch__toggle .switch__handle .switch__touch {
+  top: -0.05rem;
+  bottom: -0.05rem;
+  left: -0.1rem;
+  right: -0.1rem;
+  width: 14px;
+  height: 14px;
+  display: block;
+  content: "";
+  position: absolute;
+  z-index: 2;
+  background-size: 8px 8px;
+  background-repeat: no-repeat;
+  background-position: center 3px;
+}
+#fubon .page .container .questionnaireEditor .switch .switch__toggle .switch__handle::before {
+  width: 14px;
+  height: 14px;
+  display: block;
+  content: "";
+  position: absolute;
+  z-index: 2;
+  background-size: 8px 8px;
+  background-repeat: no-repeat;
+  background-position: center 3px;
+}
+#fubon .page .container .questionnaireEditor .switch .switch__toggle .switch__handle::after {
+  width: 18px;
+  height: 18px;
+  display: block;
+  content: "";
+  border-radius: 100%;
+  background: white;
+  position: absolute;
+  z-index: 1;
+}
+#fubon .page .container .questionnaireEditor .switch .switch__toggle::before {
+  content: "啟用";
+  left: 5px;
+  color: transparent;
+  font-size: 12px;
+  position: absolute;
+}
+#fubon .page .container .questionnaireEditor .switch .switch__toggle::after {
+  content: "停用";
+  right: 7px;
+  opacity: 1;
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+}
+
+/*# sourceMappingURL=style.css.map */
